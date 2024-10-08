@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node-dev --respawn --clear src/index.ts",
-    "start:prod": "tsc && node build/index.js"
+    "start": "ts-node-dev --respawn --clear --env-file=.env.development ./src/index.ts",
+    "start:prod": "tsc && node --env-file=.env.production ./build/index.js"
   },
   "keywords": [],
   "author": "",
