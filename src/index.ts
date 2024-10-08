@@ -1,6 +1,6 @@
 import { AppConfig } from './config/appConfig'
 import { ServerConfig } from './config/serverConfig'
-import { AppRoutes } from './infrastructure/routes'
+import { AppRoutes } from './infrastructure/appRoutes'
 import { AppServer } from './infrastructure/server'
 
 (() => {
