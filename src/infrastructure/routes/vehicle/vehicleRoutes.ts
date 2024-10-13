@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { VehicleController } from '../../controllers'
-import { BrandRouter } from '../brand/brandRoutes'
+import { BrandRouter } from './brand/brandRoutes'
 
 // eslint-disable-next-line
 export class VehicleRouter {

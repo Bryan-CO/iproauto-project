@@ -1,5 +1,5 @@
-import { Brand } from '../entities/vehicle/Brand'
+import { VehicleBrand } from '../entities/vehicle/Brand'
 
-export interface IGetBrands {
-  execute: () => Promise<Brand[]>
+export interface IGetVehicleBrands {
+  execute: () => Promise<VehicleBrand[]>
 }

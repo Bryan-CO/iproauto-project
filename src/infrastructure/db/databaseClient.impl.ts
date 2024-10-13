@@ -11,10 +11,7 @@ export class DatabaseClient implements IDatabaseClient {
       password: DbConfig.PASSWORD,
       host: DbConfig.HOST,
       port: DbConfig.PORT,
-      database: DbConfig.DATABASE,
-      ssl: {
-        rejectUnauthorized: false
-      }
+      database: DbConfig.DATABASE
       // options: '-c search_path=migracion'
     })
   }
@@ -30,7 +27,7 @@ export class DatabaseClient implements IDatabaseClient {
     // eslint-disable-next-line
     const params = parameters ? `(${parameters?.map(() => `$${paramCount++}`).join(', ')})` : '()'
 
-    const query = `${type ?? 'SELECT'} ${nameProcedure}${params};`
+    const query = `${type ?? 'SELECT * FROM'} ${nameProcedure}${params};`
     return (await this.con.query(query, parameters)).rows as T
   }
 
@@ -46,9 +43,10 @@ export class DatabaseClient implements IDatabaseClient {
       // eslint-disable-next-line
       console.log(`${DbConfig.DATABASE.toUpperCase()} database connection succesfuly!`)
     } catch (error) {
-      // eslint-disable-next-line
-      console.log(`${DbConfig.DATABASE.toUpperCase()} database connection error! Message: ${error}`)
-      process.exit(1)
+      if (error instanceof Error) {
+        console.log(`${DbConfig.DATABASE.toUpperCase()} database connection error! Message: ${error.message}`)
+        process.exit(1)
+      }
     }
   }
 }

@@ -5,7 +5,7 @@ import { VehicleRouter } from './routes'
 export class AppRoutes {
   static getRoutes (): Router {
     const router = Router()
-    router.use('/vehicle', VehicleRouter.getRoutes())
+    router.use('/vehicles', VehicleRouter.getRoutes())
     return router
   }
 }
