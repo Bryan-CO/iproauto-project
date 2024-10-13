@@ -1,9 +1,9 @@
 import { VehicleBrand } from '../../../../domain/entities/vehicle/Brand'
-import { IBrandRepository } from '../../../../domain/repositories/vehicle/brand/brand.repo'
-import { IGetVehicleBrands } from '../../../../domain/useCases/getBrands'
+import { IVehicleBrandRepository } from '../../../../domain/repositories/vehicle/brand/brand.repo'
+import { IGetVehicleBrands } from '../../../../domain/useCases/vehicle/brand/getBrands'
 
 export class GetVehicleBrands implements IGetVehicleBrands {
-  constructor (private readonly brandRepository: IBrandRepository) {
+  constructor (private readonly brandRepository: IVehicleBrandRepository) {
     this.brandRepository = brandRepository
   }
 

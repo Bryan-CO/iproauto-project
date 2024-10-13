@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { VehicleController } from '../../controllers'
 import { BrandRouter } from './brand/brandRoutes'
+import { VehicleModelRouter } from './model/modelRoutes'
 
 // eslint-disable-next-line
 export class VehicleRouter {
@@ -10,6 +11,7 @@ export class VehicleRouter {
 
     // Ruta anidada para las marcas
     router.use('/brands', BrandRouter.getRoutes())
+    router.use('/models', VehicleModelRouter.getRoutes())
     return router
   }
 }

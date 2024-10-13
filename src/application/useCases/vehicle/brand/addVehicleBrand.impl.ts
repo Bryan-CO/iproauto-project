@@ -1,10 +1,10 @@
 import { VehicleBrand } from '../../../../domain/entities/vehicle/Brand'
-import { IBrandRepository } from '../../../../domain/repositories/vehicle/brand/brand.repo'
+import { IVehicleBrandRepository } from '../../../../domain/repositories/vehicle/brand/brand.repo'
 import { IAddVehicleBrand } from '../../../../domain/useCases/vehicle/brand/addVehicleBrand'
 import { AddVehicleBrandDto } from '../../../dtos/vehicle/brand/addVehicleBrand'
 
 export class AddVehicleBrand implements IAddVehicleBrand {
-  constructor (private readonly brandRepository: IBrandRepository) {
+  constructor (private readonly brandRepository: IVehicleBrandRepository) {
     this.brandRepository = brandRepository
   }
 
