@@ -22,4 +22,13 @@ export class VehicleBrandDatasource implements IVehicleBrandDatasource {
     })
     return brand
   }
+
+  async findByBrand (brand: string): Promise<VehicleBrand> {
+    const brandFound = await this.dbClient.executeProcedure<VehicleBrand>({
+      nameProcedure: 'find_vehicle_brand',
+      parameters: [brand],
+      onRow: true
+    })
+    return brandFound
+  }
 }

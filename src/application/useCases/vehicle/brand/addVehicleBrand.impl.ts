@@ -9,7 +9,11 @@ export class AddVehicleBrand implements IAddVehicleBrand {
   }
 
   async execute (dto: AddVehicleBrandDto): Promise<VehicleBrand> {
-    const brand = await this.brandRepository.addBrand(dto.toVehicleBrand())
-    return brand
+    const existingBrand = await this.brandRepository.findByBrand(dto.getName())
+    if (existingBrand !== undefined) {
+      throw new Error('Brand already exists')
+    }
+    const newBrand = await this.brandRepository.addBrand(dto.toVehicleBrand())
+    return newBrand
   }
 }

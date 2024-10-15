@@ -17,7 +17,7 @@ export class DatabaseClient implements IDatabaseClient {
   }
 
   async executeProcedure<T>(options: ExecProdOptions): Promise<T> {
-    const { nameProcedure, parameters, type } = options
+    const { nameProcedure, parameters, type, onRow = false } = options
     // eslint-disable-next-line
     if (!nameProcedure) {
       throw new Error('Procedure name is required')
@@ -28,7 +28,9 @@ export class DatabaseClient implements IDatabaseClient {
     const params = parameters ? `(${parameters?.map(() => `$${paramCount++}`).join(', ')})` : '()'
 
     const query = `${type ?? 'SELECT * FROM'} ${nameProcedure}${params};`
-    return (await this.con.query(query, parameters)).rows as T
+    const result = (await this.con.query(query, parameters)).rows
+    const output = onRow ? result[0] : result
+    return output as T
   }
 
   async query<T>(options: QueryOptions): Promise<T> {

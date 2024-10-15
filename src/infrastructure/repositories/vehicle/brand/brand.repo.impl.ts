@@ -16,4 +16,8 @@ export class VehicleBrandRepository implements IVehicleBrandRepository {
   async addBrand (brand: VehicleBrand): Promise<VehicleBrand> {
     return await this.brandDatasource.addBrand(brand)
   }
+
+  async findByBrand (brand: string): Promise<VehicleBrand> {
+    return await this.brandDatasource.findByBrand(brand)
+  }
 }

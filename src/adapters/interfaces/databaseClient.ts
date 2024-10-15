@@ -2,6 +2,7 @@ export interface ExecProdOptions {
   nameProcedure: string
   parameters?: any[]
   type?: 'SELECT' | 'CALL'
+  onRow?: boolean
 }
 
 export interface QueryOptions {
