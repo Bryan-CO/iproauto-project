@@ -1,4 +1,5 @@
 import express, { Router } from 'express'
+import { ErrorHandler } from './middlewares/ErrorHandler'
 
 interface ServerOptions {
   port: number
@@ -12,7 +13,7 @@ export class AppServer {
     const { port, routes } = options
     this.setupMiddlewares()
     this.app.use('/api' /* Esto puede venir de un .env */, routes)
-
+    this.app.use(ErrorHandler)
     this.app.listen(port, () => {
       console.log(`App escuchando en http://localhost:${port}`)
     })
