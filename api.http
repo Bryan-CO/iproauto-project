@@ -14,5 +14,5 @@ POST {{API_URL}}/vehicles/brands
 Content-Type: application/json
 
 {
-    "name": "Toyota123"
+    "name": "Toyota12345"
 }
