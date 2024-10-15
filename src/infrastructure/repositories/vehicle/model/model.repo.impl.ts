@@ -14,4 +14,12 @@ export class VehicleModelRepository implements IVehicleModelRepository {
   async getModelsByBrandId (idBrand: number): Promise<VehicleModel[]> {
     return await this.modelDatasource.getModelsByBrandId(idBrand)
   }
+
+  async findByModel (model: string): Promise<VehicleModel> {
+    return await this.modelDatasource.findByModel(model)
+  }
+
+  async addModel (vehicleModel: VehicleModel): Promise<VehicleModel> {
+    return await this.modelDatasource.addModel(vehicleModel)
+  }
 }

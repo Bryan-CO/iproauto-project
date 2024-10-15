@@ -16,3 +16,12 @@ Content-Type: application/json
 {
     "name": "Toyota12345"
 }
+
+### ADD VEHICLE MODEL
+POST {{API_URL}}/vehicles/models
+Content-Type: application/json
+
+{
+    "idBrand": 1,
+    "name": "Toyota12345"
+}

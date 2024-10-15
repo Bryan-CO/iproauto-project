@@ -19,4 +19,19 @@ export class VehicleModelDatasource implements IVehicleModelDatasource {
       parameters: [idBrand]
     })
   }
+
+  async findByModel (model: string): Promise<VehicleModel> {
+    return await this.dbClient.executeProcedure<VehicleModel>({
+      nameProcedure: 'find_vehicle_model',
+      parameters: [model],
+      onRow: true
+    })
+  }
+
+  async addModel (vehicleModel: VehicleModel): Promise<VehicleModel> {
+    return await this.dbClient.executeProcedure<VehicleModel>({
+      nameProcedure: 'add_vehicle_model',
+      parameters: [vehicleModel.getIdBrand(), vehicleModel.getName()]
+    })
+  }
 }
