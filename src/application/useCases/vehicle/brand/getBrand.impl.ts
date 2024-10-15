@@ -3,11 +3,13 @@ import { IVehicleBrandRepository } from '../../../../domain/repositories/vehicle
 import { IGetVehicleBrands } from '../../../../domain/useCases/vehicle/brand/getBrands'
 
 export class GetVehicleBrands implements IGetVehicleBrands {
-  constructor (private readonly brandRepository: IVehicleBrandRepository) {
+  private readonly brandRepository: IVehicleBrandRepository
+  constructor (brandRepository: IVehicleBrandRepository) {
     this.brandRepository = brandRepository
   }
 
   async execute (): Promise<VehicleBrand[]> {
-    return await this.brandRepository.getAllBrands()
+    const brands = await this.brandRepository.getAllBrands()
+    return brands
   }
 }

@@ -2,13 +2,15 @@ import { IVehicleBrandDatasource } from '../../../../domain/datasources/vehicle/
 import { VehicleBrand } from '../../../../domain/entities/vehicle/Brand'
 import { IVehicleBrandRepository } from '../../../../domain/repositories/vehicle/brand/brand.repo'
 
-export class BrandRepository implements IVehicleBrandRepository {
-  constructor (private readonly brandDatasource: IVehicleBrandDatasource) {
+export class VehicleBrandRepository implements IVehicleBrandRepository {
+  private readonly brandDatasource: IVehicleBrandDatasource
+  constructor (brandDatasource: IVehicleBrandDatasource) {
     this.brandDatasource = brandDatasource
   }
 
   async getAllBrands (): Promise<VehicleBrand[]> {
-    return await this.brandDatasource.getAllBrands()
+    const brands = await this.brandDatasource.getAllBrands()
+    return brands
   }
 
   async addBrand (brand: VehicleBrand): Promise<VehicleBrand> {

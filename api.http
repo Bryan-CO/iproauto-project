@@ -1,0 +1,18 @@
+@API_URL = http://localhost:1278/api
+
+### GET ALL VEHICLE BRANDS
+GET {{API_URL}}/vehicles/brands
+
+### GET VEHICLE MODELS BY BRAND ID
+GET {{API_URL}}/vehicles/brands/5/models
+
+### GET ALL VEHICLE MODELS
+GET {{API_URL}}/vehicles/models
+
+### ADD VEHICLE BRAND
+POST {{API_URL}}/vehicles/brands
+Content-Type: application/json
+
+{
+    "name": "Toyota123"
+}

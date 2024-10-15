@@ -181,3 +181,16 @@ INSERT INTO districts (id_province, name) VALUES
 (10, 'Ayacucho'),
 (10, 'Huamanga'),
 (10, 'Cangallo');
+
+
+-------------------------- PROCEDIMIENTOS Y FUNCIONES -----------------------
+-- OBTENER LAS MARCAS DE VEHICULOS
+CREATE OR REPLACE FUNCTION public.get_vehicle_brands()
+ RETURNS TABLE(id_brand integer, name character varying)
+ LANGUAGE plpgsql
+AS $function$
+BEGIN
+    RETURN QUERY
+    SELECT VB.id_brand, VB.name from vehicle_brands VB;
+END;
+$function$

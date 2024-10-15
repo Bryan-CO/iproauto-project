@@ -3,7 +3,8 @@ import { IVehicleBrandDatasource } from '../../../../domain/datasources/vehicle/
 import { VehicleBrand } from '../../../../domain/entities/vehicle/Brand'
 
 export class VehicleBrandDatasource implements IVehicleBrandDatasource {
-  constructor (private readonly dbClient: IDatabaseClient) {
+  private readonly dbClient: IDatabaseClient
+  constructor (dbClient: IDatabaseClient) {
     this.dbClient = dbClient
   }
 
