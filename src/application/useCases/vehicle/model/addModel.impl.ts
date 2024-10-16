@@ -14,7 +14,6 @@ export class AddVehicleModel implements IAddVehicleModel {
       throw new Error('Model already exists')
     }
     const newModel = await this.modelRepository.addModel(dto.toVehicleModel())
-    console.log('NUEVO: ', newModel)
     return newModel
   }
 }
