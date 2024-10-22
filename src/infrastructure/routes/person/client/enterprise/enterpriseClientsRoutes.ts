@@ -7,6 +7,7 @@ export class EnterpriseClientsRouter {
   static getRoutes (): Router {
     const router = Router()
     router.post('/', TryCatch.handler(ClientController.addEnterpriseClient))
+    router.get('/:idEnterpriseClient', TryCatch.handler(ClientController.getEnterpriseClientById))
     return router
   }
 }

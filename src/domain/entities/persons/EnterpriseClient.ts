@@ -4,12 +4,13 @@ import { Fare } from './Fare'
 import { DocumentType, Person } from './Person'
 
 export class EnterpriseClient extends Person {
+  private readonly idEnterpriseClient: number | null
   private readonly companyName: string | null
   private readonly contactPerson: string | null
   private readonly contactPhone: string | null
-  private readonly employeeSince: Date | null
 
   constructor (
+    idEnterpriseClient: number | null,
     idPerson: number | null,
     documentType: DocumentType | null,
     documentNumber: string | null,
@@ -23,14 +24,17 @@ export class EnterpriseClient extends Person {
     fare: Fare | null,
     companyName: string | null,
     contactPerson: string | null,
-    contactPhone: string | null,
-    employeeSince: Date | null
+    contactPhone: string | null
   ) {
     super(idPerson, documentType, documentNumber, province, district, address, selfPhone, referencePhone, email, observations, fare)
+    this.idEnterpriseClient = idEnterpriseClient
     this.companyName = companyName
     this.contactPerson = contactPerson
     this.contactPhone = contactPhone
-    this.employeeSince = employeeSince
+  }
+
+  getIdEnterpriseClient (): number | null {
+    return this.idEnterpriseClient
   }
 
   getContactPerson (): string | null {
@@ -43,9 +47,5 @@ export class EnterpriseClient extends Person {
 
   getCompanyName (): string | null {
     return this.companyName
-  }
-
-  getEmployeeSince (): Date | null {
-    return this.employeeSince
   }
 }

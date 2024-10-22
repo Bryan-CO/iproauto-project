@@ -25,8 +25,18 @@ export class EnterpriseClientDataSource implements IEnterpriseClientDataSource {
         enterpriseClient.getCompanyName(),
         enterpriseClient.getContactPerson(),
         enterpriseClient.getContactPhone()
-      ]
+      ],
+      onRow: true
     })
     return enterpriseClientId
+  }
+
+  async getEnterpriseClientById (idEnterpriseClient: number): Promise<EnterpriseClient> {
+    const enterpriseClientDB = await this.databaseClient.executeProcedure<EnterpriseClient>({
+      nameProcedure: 'get_enterprise_client_by_id',
+      parameters: [idEnterpriseClient],
+      onRow: true
+    })
+    return enterpriseClientDB
   }
 }

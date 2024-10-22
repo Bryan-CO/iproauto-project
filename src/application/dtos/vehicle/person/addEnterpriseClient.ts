@@ -4,6 +4,7 @@ import { DocumentType } from '../../../../domain/entities/persons/Person'
 import { Province } from '../../../../domain/entities/localization/Province'
 import { District } from '../../../../domain/entities/localization/District'
 import { Fare } from '../../../../domain/entities/persons/Fare'
+
 export class AddEnterpriseClientDTO extends AddClientDTO {
   private readonly companyName: string
   private readonly contactPerson: string
@@ -44,6 +45,7 @@ export class AddEnterpriseClientDTO extends AddClientDTO {
   toEnterpriseClient (): EnterpriseClient {
     const naturalClient = new EnterpriseClient(
       null,
+      null,
       new DocumentType(this.getIdDocumentType(), null),
       this.getDocumentNumber(),
       new Province(this.getIdProvince(), null),
@@ -56,8 +58,7 @@ export class AddEnterpriseClientDTO extends AddClientDTO {
       new Fare(this.getIdFare(), null),
       this.getCompanyName(),
       this.getContactPerson(),
-      this.getContactPhone(),
-      new Date() // Fecha actual
+      this.getContactPhone()
     )
     return naturalClient
   }
