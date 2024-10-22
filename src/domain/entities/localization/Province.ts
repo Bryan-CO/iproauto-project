@@ -1,8 +1,8 @@
 export class Province {
   private readonly idProvince: number | null
-  private readonly name: string
+  private readonly name: string | null
 
-  constructor (idProvince: number | null, name: string) {
+  constructor (idProvince: number | null, name: string | null) {
     this.idProvince = idProvince
     this.name = name
   }
@@ -11,7 +11,7 @@ export class Province {
     return this.idProvince
   }
 
-  getName (): string {
+  getName (): string | null {
     return this.name
   }
 }
