@@ -4,17 +4,38 @@
 GET {{API_URL}}/vehicles/brands
 
 ### GET VEHICLE MODELS BY BRAND ID
-GET {{API_URL}}/vehicles/brands/5/models
+GET {{API_URL}}/vehicles/brands/1/models
 
 ### GET ALL VEHICLE MODELS
 GET {{API_URL}}/vehicles/models
+
+### GET ALL VEHICLE COLORS
+GET {{API_URL}}/vehicles/colors
+
+### GET ALL VEHICLE FUELS
+GET {{API_URL}}/vehicles/fuels
+
+### GET ALL PROVINCES
+GET {{API_URL}}/localization/provinces
+
+### GET ALL DISTRICTS BY PROVINCE
+GET {{API_URL}}/localization/provinces/3/districts
+
+### GET CLIENT SUMMARY
+GET {{API_URL}}/clients/summary
+
+### GET DOCUMENT TYPES
+GET {{API_URL}}/clients/documents/types
+
+### GET FARES
+GET {{API_URL}}/fares
 
 ### ADD VEHICLE BRAND
 POST {{API_URL}}/vehicles/brands
 Content-Type: application/json
 
 {
-    "name": "Toyota12345"
+    "name": "Toyota123456"
 }
 
 ### ADD VEHICLE MODEL
@@ -22,6 +43,48 @@ POST {{API_URL}}/vehicles/models
 Content-Type: application/json
 
 {
-    "idBrand": 1,
-    "name": "Toyota12345"
+    "idBrand": 6,
+    "name": "Toyota12345678"
+}
+
+### GET NATURAL CLIENT BY ID
+GET {{API_URL}}/clients/naturals/7
+
+### GET ENTERPRISE CLIENT BY ID
+GET {{API_URL}}/clients/enterprises/2
+
+### ADD NATURAL CLIENT
+POST {{API_URL}}/clients/naturals
+Content-Type: application/json
+
+{
+    "idDocumentType": 1,
+    "documentNumber": "20408612",
+    "names": "Marlene Macedonia",
+    "lastNames": "Ortiz Torres",
+    "idProvince": 3,
+    "idDistrict": 3,
+    "address": "AA.HH 28 de mayo",
+    "selfPhone": "914568919",
+    "email": "marlene.macedonia@gmail.com",
+    "idFare": 1
+}
+
+### ADD ENTERPRISE CLIENT
+POST {{API_URL}}/clients/enterprises
+Content-Type: application/json
+
+{
+    "idDocumentType": 2,
+    "documentNumber": "20784512963",
+    "companyName": "Washington Voces xd",
+    "idProvince": 2,
+    "idDistrict": 3,
+    "address": "Av de la Constitución 100",
+    "selfPhone": "951753959",
+    "email": "wp_voces@gmail.com",
+    "observations": "Es una empresa lol",
+    "idFare": 1,
+    "contactPerson": "Nill XD",
+    "contactPhone": "951321032"
 }

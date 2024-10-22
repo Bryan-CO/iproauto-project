@@ -1,4 +1,4 @@
--- Active: 1725690348102@@localhost@5432@iproauto
+-- Active: 1728779917617@@127.0.0.1@5432@iproauto
 -- CREATE DATABASE IPROAUTO;
 
 --------------------------- ALL ABOUT VEHICLES -----------------------------
@@ -194,3 +194,174 @@ BEGIN
     SELECT VB.id_brand, VB.name from vehicle_brands VB;
 END;
 $function$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE person_document_type(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+DROP TABLE IF EXISTS persons CASCADE;
+
+CREATE TABLE type_persons(
+    id_type_person SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS fares(
+    id_fare SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+DROP TABLE persons;
+CREATE TABLE IF NOT EXISTS persons(
+    id_person SERIAL PRIMARY KEY,
+    document_type_id INTEGER NOT NULL REFERENCES person_document_type(id_document_type),
+    document_number VARCHAR(255) NOT NULL,
+    id_province INTEGER NOT NULL REFERENCES provinces(id_province),
+    id_district INTEGER NOT NULL REFERENCES districts(id_district),
+    address VARCHAR(255) NOT NULL,
+    self_phone VARCHAR(255) NOT NULL,
+    reference_phone VARCHAR(255),
+    email VARCHAR(255),
+    observations VARCHAR(255),
+    id_fare INTEGER NOT NULL REFERENCES fares(id_fare),
+    UNIQUE(document_number)
+);
+
+DROP TABLE natural_persons;
+CREATE TABLE IF NOT EXISTS natural_persons(
+    id_natural_person SERIAL PRIMARY KEY,
+    id_person INTEGER NOT NULL REFERENCES persons(id_person) UNIQUE,
+    names VARCHAR(255) NOT NULL,
+    last_names VARCHAR(255) NOT NULL
+    --date_of_birth DATE NOT NULL
+);
+
+DROP TABLE natural_clients;
+CREATE TABLE IF NOT EXISTS natural_clients( -- FALTA DEFINIR SI SERA PROPIETARIO O CLIENTE
+    id_client SERIAL PRIMARY KEY,
+    id_person INTEGER NOT NULL REFERENCES persons(id_person) UNIQUE,
+    customer_since DATE DEFAULT CURRENT_DATE
+);
+
+DROP TABLE employees;
+CREATE TABLE IF NOT EXISTS employees(
+    id_employee SERIAL PRIMARY KEY,
+    id_person INTEGER NOT NULL REFERENCES persons(id_person) UNIQUE,
+    employee_since DATE DEFAULT CURRENT_DATE
+)
+
+
+DROP TABLE enterprises_clients;
+CREATE TABLE IF NOT EXISTS enterprises_clients(
+    id_enterprise SERIAL PRIMARY KEY,
+    id_person INTEGER NOT NULL REFERENCES persons(id_person),
+    company_name VARCHAR(255) NOT NULL, -- QUEDA EN PIE VER SI UNIQUE, YA QUE COMO LO COMPRUEBO?
+    contact_person VARCHAR(255) NOT NULL,
+    contact_phone VARCHAR(255) NOT NULL
+)
+
+
+
+DELETE FROM PERSONS;
+
+INSERT INTO persons (id_type_person, document_type_id, document_number, id_province, id_district, address, self_phone, reference_phone, email, observations) VALUES
+(1, 1, '12345678', 1, 1, 'Calle 1, N° 123', '987654321', '123456789', 'cliente1@example.com', 'Ninguna'), -- Persona Natural
+(2, 2, '87654321', 1, 2, 'Calle 2, N° 456', '987654322', NULL, 'empresa1@example.com', 'Observación 1'), -- Empresa
+(1, 1, '23456789', 2, 1, 'Calle 3, N° 789', '987654323', '123456780', 'cliente2@example.com', NULL), -- Persona Natural
+(2, 2, '98765432', 2, 2, 'Calle 4, N° 101', '987654324', NULL, 'empresa2@example.com', 'Observación 2'), -- Empresa
+(1, 1, '34567890', 3, 3, 'Calle 5, N° 102', '987654325', '123456781', 'cliente3@example.com', 'Observación 3'), -- Persona Natural
+(2, 2, '45678901', 3, 1, 'Calle 6, N° 103', '987654326', NULL, 'empresa3@example.com', 'Ninguna'), -- Empresa
+(1, 1, '56789012', 1, 2, 'Calle 7, N° 104', '987654327', '123456782', 'cliente4@example.com', 'Observación 4'), -- Persona Natural
+(1, 2, '67890123', 2, 3, 'Calle 8, N° 105', '987654328', NULL, 'cliente5@example.com', NULL), -- Persona Natural
+(2, 2, '10901234', 3, 1, 'Calle 9, N° 106', '987654329', '123456783', 'empresa4@example.com', 'Ninguna'), -- Empresa
+(1, 1, '89012345', 1, 2, 'Calle 10, N° 107', '987654330', NULL, 'cliente6@example.com', 'Observación 5'); -- Persona Natural
+
+-- Insertar datos en la tabla natural_persons
+INSERT INTO natural_persons (id_person, names, last_names, date_of_birth) VALUES
+(21, 'Juan', 'Pérez', '1990-01-01'),
+(23, 'María', 'Gómez', '1985-05-15'),
+(25, 'Carlos', 'Sánchez', '1992-03-20'),
+(27, 'Ana', 'Martínez', '1998-07-30'),
+(29, 'Luis', 'Ramírez', '1995-12-10'),
+(30, 'Sofía', 'López', '1991-11-25');
+
+-- Insertar datos en la tabla natural_clients
+INSERT INTO natural_clients (id_person, customer_since) VALUES
+(21, '2020-01-15'),
+(23, '2021-03-10'),
+(25, '2022-02-20'),
+(27, '2020-05-05'),
+(29, '2021-07-15');
+
+-- Insertar datos en la tabla employees
+INSERT INTO employees (id_person, employee_since) VALUES
+(21, '2021-06-15'),  -- Persona Natural
+(23, '2018-11-30'),  -- Persona Natural
+(30, '2023-03-10'); -- Persona Natural
+
+-- Insertar datos en la tabla enterprises_clients
+INSERT INTO enterprises_clients (id_person, company_name) VALUES
+(22, 'Empresa Uno S.A.'),
+(24, 'Empresa Dos S.A.'),
+(26, 'Empresa Tres S.A.'),
+(29, 'Empresa Cinco S.A.');
+
+
+SELECT P.*, TP.NAME FROM PERSONS P INNER JOIN TYPE_PERSONS TP ON P.id_type_person = TP.id_type_person;
+
+SELECT P.ID_PERSON, TP.NAME, D.NAME, P.DOCUMENT_NUMBER, P.ADDRESS, P.EMAIL, P.OBSERVATIONS
+FROM PERSONS P INNER JOIN TYPE_PERSONS TP ON P.id_type_person = TP.id_type_person
+INNER JOIN PERSON_DOCUMENT_TYPE D ON P.document_type_id = D.id_document_type
+ORDER BY P.ID_PERSON;
+
+SELECT * FROM persons;
+SELECT * FROM natural_persons;
+SELECT * FROM natural_clients;
+SELECT * FROM employees;
+SELECT * FROM enterprises_clients;
+
