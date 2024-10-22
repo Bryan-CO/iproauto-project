@@ -11,6 +11,7 @@ export class ClientRouter {
     router.use('/naturals', NaturalClientRouter.getRoutes())
     router.use('/enterprises', EnterpriseClientsRouter.getRoutes())
     router.use('/summary', TryCatch.handler(ClientController.getClientsSummary))
+    router.use('/documents/types', TryCatch.handler(ClientController.getDocumentTypes))
     return router
   }
 }

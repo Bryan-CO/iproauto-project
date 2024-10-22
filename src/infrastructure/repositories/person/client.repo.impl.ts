@@ -2,6 +2,8 @@ import { DbToClientSummary } from '../../../adapters/mappers/person/clientSummar
 import { GetClientSummaryDTO } from '../../../application/dtos/vehicle/person/getClientSummary'
 import { IClientDataSource } from '../../../domain/datasources/person/client.datasource'
 import { IClientRepository } from '../../../domain/repositories/person/client.repo'
+import { DocumentType } from '../../../domain/entities/persons/Person'
+import { DbToDocumentTypes } from '../../../adapters/mappers/person/documentTypes.mapper'
 
 export class ClientRepository implements IClientRepository {
   private readonly clientDataSource: IClientDataSource
@@ -13,5 +15,10 @@ export class ClientRepository implements IClientRepository {
   async getClientsSummary (): Promise<GetClientSummaryDTO[]> {
     const clientSummary = await this.clientDataSource.getClientsSummary()
     return DbToClientSummary(clientSummary)
+  }
+
+  async getDocumentTypes (): Promise<DocumentType[]> {
+    const documentTypes = await this.clientDataSource.getDocumentTypes()
+    return DbToDocumentTypes(documentTypes)
   }
 }

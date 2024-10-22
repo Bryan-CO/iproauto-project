@@ -1,9 +1,9 @@
 import { AddEnterpriseClientDTO } from '../../../../application/dtos/vehicle/person/addEnterpriseClient'
 import { AddNaturalClientDTO } from '../../../../application/dtos/vehicle/person/addNaturalClient'
 import { ResponseModel } from '../../../../shared/ResponseModel'
-import { getClientsSummary } from '../../../dependencies/person/client.container'
-import { addEnterpriseClient } from '../../../dependencies/person/enterpriseClient.container'
-import { addNaturalClient } from '../../../dependencies/person/naturalClient.container'
+import { getClientsSummary, getDocumentTypes } from '../../../dependencies/person/client.container'
+import { addEnterpriseClient, getEnterpriseClientById } from '../../../dependencies/person/enterpriseClient.container'
+import { addNaturalClient, getNaturalClientById } from '../../../dependencies/person/naturalClient.container'
 import { Request, Response } from 'express'
 
 // eslint-disable-next-line
@@ -25,5 +25,22 @@ export class ClientController {
   static async getClientsSummary (req: Request, res: Response): Promise<void> {
     const clientSummary = await getClientsSummary.execute()
     ResponseModel.success({ res, data: clientSummary, message: 'Clients summary successfully' })
+  }
+
+  static async getDocumentTypes (req: Request, res: Response): Promise<void> {
+    const documentTypes = await getDocumentTypes.execute()
+    ResponseModel.success({ res, data: documentTypes, message: 'Document types successfully' })
+  }
+
+  static async getNaturalClientById (req: Request, res: Response): Promise<void> {
+    const { idNaturalClient } = req.params
+    const naturalClient = await getNaturalClientById.execute(Number(idNaturalClient))
+    ResponseModel.success({ res, data: naturalClient, message: 'Natural Client by id successfully' })
+  }
+
+  static async getEnterpriseClientById (req: Request, res: Response): Promise<void> {
+    const { idEnterpriseClient } = req.params
+    const enterpriseClient = await getEnterpriseClientById.execute(Number(idEnterpriseClient))
+    ResponseModel.success({ res, data: enterpriseClient, message: 'Enterprise Client by id successfully' })
   }
 }
