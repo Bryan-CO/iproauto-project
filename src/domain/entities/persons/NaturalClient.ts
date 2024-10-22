@@ -5,8 +5,10 @@ import { NaturalPerson } from './NaturalPerson'
 import { DocumentType } from './Person'
 
 export class NaturalClient extends NaturalPerson {
+  private readonly idNaturalClient: number | null
   private readonly clientSince: Date | null
   constructor (
+    idNaturalClient: number | null,
     idPerson: number | null,
     documentType: DocumentType | null,
     documentNumber: string | null,
@@ -25,7 +27,12 @@ export class NaturalClient extends NaturalPerson {
     clientSince: Date | null
   ) {
     super(idPerson, documentType, documentNumber, province, district, address, selfPhone, referencePhone, email, observations, fare, names, lastNames /* birthDate gender */)
+    this.idNaturalClient = idNaturalClient
     this.clientSince = clientSince
+  }
+
+  getIdNaturalClient (): number | null {
+    return this.idNaturalClient
   }
 
   getClientSince (): Date | null {

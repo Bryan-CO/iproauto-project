@@ -25,7 +25,17 @@ export class NaturalClientDataSource implements INaturalClientDataSource {
         naturalClient.getNames(),
         naturalClient.getLastNames(),
         naturalClient.getClientSince()
-      ]
+      ],
+      onRow: true
+    })
+    return naturalClientDB
+  }
+
+  async getNaturalClientById (idNaturalClient: number): Promise<NaturalClient> {
+    const naturalClientDB = await this.databaseClient.executeProcedure<NaturalClient>({
+      nameProcedure: 'get_natural_client_by_id',
+      parameters: [idNaturalClient],
+      onRow: true
     })
     return naturalClientDB
   }

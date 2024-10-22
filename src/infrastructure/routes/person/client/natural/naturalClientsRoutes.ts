@@ -7,6 +7,7 @@ export class NaturalClientRouter {
   static getRoutes (): Router {
     const router = Router()
     router.post('/', TryCatch.handler(ClientController.addNaturalClient))
+    router.get('/:idNaturalClient', TryCatch.handler(ClientController.getNaturalClientById))
     return router
   }
 }

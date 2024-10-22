@@ -38,6 +38,7 @@ export class AddNaturalClientDTO extends AddClientDTO {
   toNaturalClient (): NaturalClient {
     const naturalClient = new NaturalClient(
       null,
+      null,
       new DocumentType(this.getIdDocumentType(), null),
       this.getDocumentNumber(),
       new Province(this.getIdProvince(), null),
