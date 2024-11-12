@@ -17,6 +17,15 @@ export function DbToVehicle (dbVehicle: any): Vehicle {
     .withFuel(new VehicleFuel(dbVehicle.id_fuel, dbVehicle.fuel_name))
     .withObservations(dbVehicle.observations)
     .withUrlImage(dbVehicle.url_image)
-    .withIdPerson(dbVehicle.id_person)
+    .withClient({
+      idPerson: dbVehicle.id_person,
+      documentTypeName: dbVehicle.document_type_name,
+      documentNumber: dbVehicle.document_number,
+      client: dbVehicle.client,
+      address: dbVehicle.address,
+      provinceName: dbVehicle.province_name,
+      districtName: dbVehicle.district_name,
+      selfPhone: dbVehicle.self_phone
+    })
     .build()
 }

@@ -106,7 +106,9 @@ export class AddVehicleDto {
       .withFuel(new VehicleFuel(this.idFuel, null))
       .withObservations(this.observations)
       .withUrlImage(this.urlImage)
-      .withIdPerson(this.idPerson)
+      .withClient({
+        idPerson: this.idPerson
+      })
       .build()
   }
 }

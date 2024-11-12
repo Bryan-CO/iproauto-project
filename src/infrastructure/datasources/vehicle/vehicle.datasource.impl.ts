@@ -31,7 +31,7 @@ export class VehicleDatasource implements IVehicleDataSource {
         vehicle.getFuel()?.getIdFuel(),
         vehicle.getObservations(),
         vehicle.getUrlImage(),
-        vehicle.getIdPerson()
+        vehicle.getClient()?.idPerson
       ],
       onRow: true
     })
@@ -53,7 +53,7 @@ export class VehicleDatasource implements IVehicleDataSource {
         vehicle.getFuel()?.getIdFuel(),
         vehicle.getObservations(),
         vehicle.getUrlImage(),
-        vehicle.getIdPerson()
+        vehicle.getClient()?.idPerson
       ],
       onRow: true
     })

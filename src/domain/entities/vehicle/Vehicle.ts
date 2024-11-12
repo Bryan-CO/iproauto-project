@@ -3,6 +3,16 @@ import { VehicleColor } from './Color'
 import { VehicleFuel } from './Fuel'
 import { VehicleModel } from './Model'
 
+interface ClientSummary {
+  idPerson?: number | null
+  documentTypeName?: string | null
+  documentNumber?: string | null
+  client?: string | null
+  address?: string | null
+  provinceName?: string | null
+  districtName?: string | null
+  selfPhone?: string | null
+}
 export class Vehicle {
   private readonly idVehicle: number | null
   private readonly licensePlate: string | null
@@ -15,7 +25,7 @@ export class Vehicle {
   private readonly fuel: VehicleFuel | null
   private readonly observations: string | null
   private readonly urlImage: string | null
-  private readonly idPerson: number | null
+  private readonly client: ClientSummary | null
 
   constructor (
     builder: VehicleBuilder
@@ -31,7 +41,7 @@ export class Vehicle {
     this.fuel = builder.fuel
     this.observations = builder.observations
     this.urlImage = builder.urlImage
-    this.idPerson = builder.idPerson
+    this.client = builder.client
   }
 
   getIdVehicle (): number | null {
@@ -78,8 +88,8 @@ export class Vehicle {
     return this.urlImage
   }
 
-  getIdPerson (): number | null {
-    return this.idPerson
+  getClient (): ClientSummary | null {
+    return this.client
   }
 }
 
@@ -95,7 +105,7 @@ export class VehicleBuilder {
   fuel: VehicleFuel | null
   observations: string | null
   urlImage: string | null
-  idPerson: number | null
+  client: ClientSummary | null
 
   constructor () {
     this.idVehicle = null
@@ -109,7 +119,7 @@ export class VehicleBuilder {
     this.fuel = null
     this.observations = null
     this.urlImage = null
-    this.idPerson = null
+    this.client = null
   }
 
   withIdVehicle (idVehicle: number | null): VehicleBuilder {
@@ -167,8 +177,8 @@ export class VehicleBuilder {
     return this
   }
 
-  withIdPerson (idPerson: number | null): VehicleBuilder {
-    this.idPerson = idPerson
+  withClient (client: ClientSummary | null): VehicleBuilder {
+    this.client = client
     return this
   }
 

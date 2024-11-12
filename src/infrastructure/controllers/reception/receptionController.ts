@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { ResponseModel } from '../../../shared/ResponseModel'
-import { addReception, editReception, getReceptions } from '../../dependencies/reception/reception.container'
+import { addReception, editReception, getFuelLevels, getReceptions } from '../../dependencies/reception/reception.container'
 import { AddReceptionDTOBuilder } from '../../../application/dtos/reception/addReception'
 import { EditReceptionDtoBuilder } from '../../../application/dtos/reception/editReception'
 import { validationResult } from 'express-validator'
@@ -63,5 +63,10 @@ export class ReceptionController {
       .build()
     const reception = await editReception.execute(editReceptionDto, req.file?.mimetype.split('/')[1])
     ResponseModel.success({ res, data: reception, message: 'Reception updated successfully' })
+  }
+
+  static async getFuelLevels (req: Request, res: Response): Promise<void> {
+    const fuelLevels = await getFuelLevels.execute()
+    ResponseModel.success({ res, data: fuelLevels, message: 'Fuel levels successfully retrieved' })
   }
 }

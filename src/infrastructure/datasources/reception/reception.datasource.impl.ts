@@ -63,4 +63,11 @@ export class ReceptionDataSource implements IReceptionDataSource {
     })
     return newReception
   }
+
+  async getFuelLevels (): Promise<any> {
+    const fuelLevels = await this.databaseClient.executeProcedure<any>({
+      nameProcedure: 'get_fuel_levels'
+    })
+    return fuelLevels
+  }
 }

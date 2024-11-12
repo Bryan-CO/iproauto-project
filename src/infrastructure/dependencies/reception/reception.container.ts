@@ -7,6 +7,7 @@ import { AddReception } from '../../../application/useCases/receptions/addRecept
 import { FileStorageDataSource } from '../../datasources/file/fileStorage.datasource.impl'
 import { FileStorageRepository } from '../../repositories/file/fileStorage.repo.impl'
 import { EditReception } from '../../../application/useCases/receptions/editReception'
+import { GetFuelLevels } from '../../../application/useCases/receptions/getFuelLevels'
 
 export const container = awilix.createContainer({
   injectionMode: awilix.InjectionMode.CLASSIC
@@ -20,10 +21,12 @@ container.register({
   fileStorageRepository: awilix.asClass(FileStorageRepository).singleton(),
   getReceptions: awilix.asClass(GetReceptions),
   addReception: awilix.asClass(AddReception),
-  editReception: awilix.asClass(EditReception)
+  editReception: awilix.asClass(EditReception),
+  getFuelLevels: awilix.asClass(GetFuelLevels)
 })
 
 const getReceptions = container.resolve<GetReceptions>('getReceptions')
 const addReception = container.resolve<AddReception>('addReception')
 const editReception = container.resolve<EditReception>('editReception')
-export { getReceptions, addReception, editReception }
+const getFuelLevels = container.resolve<GetFuelLevels>('getFuelLevels')
+export { getReceptions, addReception, editReception, getFuelLevels }

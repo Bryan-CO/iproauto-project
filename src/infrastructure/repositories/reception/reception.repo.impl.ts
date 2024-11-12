@@ -1,6 +1,7 @@
+import { DbToFuelLevels } from '../../../adapters/mappers/reception/fuelLevel.mapper'
 import { DbToReceptions } from '../../../adapters/mappers/reception/reception.mapper'
 import { IReceptionDataSource } from '../../../domain/datasources/receptions/reception.datasource'
-import { Reception } from '../../../domain/entities/receptions/Reception'
+import { FuelLevel, Reception } from '../../../domain/entities/receptions/Reception'
 import { IReceptionRepository } from '../../../domain/repositories/reception/reception.repo'
 
 export class ReceptionRepository implements IReceptionRepository {
@@ -23,5 +24,10 @@ export class ReceptionRepository implements IReceptionRepository {
   async editReception (reception: Reception): Promise<Reception> {
     const updatedReception = await this.receptionDataSource.editReception(reception)
     return DbToReceptions([updatedReception])[0]
+  }
+
+  async getFuelLevels (): Promise<FuelLevel[]> {
+    const fuelLevels = await this.receptionDataSource.getFuelLevels()
+    return DbToFuelLevels(fuelLevels)
   }
 }

@@ -12,6 +12,7 @@ export class ReceptionRouter {
     router.get('/', TryCatch.handler(ReceptionController.getReceptions))
     router.post('/', uploadFileMiddleware, addReceptionValidator, ValidationRequest, TryCatch.handler(ReceptionController.addReception))
     router.patch('/:id', uploadFileMiddleware, updateReceptionValidator, ValidationRequest, TryCatch.handler(ReceptionController.updateReception))
+    router.get('/fuel-levels', TryCatch.handler(ReceptionController.getFuelLevels))
     return router
   }
 }

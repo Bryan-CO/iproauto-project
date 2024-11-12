@@ -1,3 +1,7 @@
+export interface FuelLevel {
+  idFuelLevel?: number | null
+  level?: number | null
+}
 interface VehicleSummary {
   idVehicle?: number | null
   licensePlate?: string | null
@@ -5,11 +9,6 @@ interface VehicleSummary {
   modelName?: string | null
   engineCapacity?: number | null
   chassisNumber?: string | null
-}
-
-interface FuelLevel {
-  idFuelLevel?: number | null
-  level?: number | null
 }
 
 interface ClientSummary {
