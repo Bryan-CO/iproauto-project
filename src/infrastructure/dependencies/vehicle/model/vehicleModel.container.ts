@@ -11,11 +11,11 @@ const container = awilix.createContainer({
 
 container.register({
   dbClient: awilix.asValue(dbClient),
-  modelDatasource: awilix.asClass(VehicleModelDatasource),
-  modelRepository: awilix.asClass(VehicleModelRepository),
-  getVehicleModels: awilix.asClass(GetVehicleModels),
-  getVehicleModelsByBrandId: awilix.asClass(GetVehicleModelsByBrandId),
-  addVehicleModel: awilix.asClass(AddVehicleModel)
+  modelDatasource: awilix.asClass(VehicleModelDatasource).singleton(),
+  modelRepository: awilix.asClass(VehicleModelRepository).singleton(),
+  getVehicleModels: awilix.asClass(GetVehicleModels).singleton(),
+  getVehicleModelsByBrandId: awilix.asClass(GetVehicleModelsByBrandId).singleton(),
+  addVehicleModel: awilix.asClass(AddVehicleModel).singleton()
 })
 
 const getVehicleBrands = container.resolve<GetVehicleModels>('getVehicleModels')

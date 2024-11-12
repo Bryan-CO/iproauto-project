@@ -8,10 +8,10 @@ import { EnterpriseClientsRouter } from './enterprise/enterpriseClientsRoutes'
 export class ClientRouter {
   static getRoutes (): Router {
     const router = Router()
+    router.get('/', TryCatch.handler(ClientController.getClients))
+    router.get('/documents/types', TryCatch.handler(ClientController.getDocumentTypes))
     router.use('/naturals', NaturalClientRouter.getRoutes())
     router.use('/enterprises', EnterpriseClientsRouter.getRoutes())
-    router.use('/summary', TryCatch.handler(ClientController.getClientsSummary))
-    router.use('/documents/types', TryCatch.handler(ClientController.getDocumentTypes))
     return router
   }
 }

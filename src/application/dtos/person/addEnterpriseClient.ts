@@ -1,9 +1,9 @@
-import { EnterpriseClient } from '../../../../domain/entities/persons/EnterpriseClient'
+import { District } from '../../../domain/entities/localization/District'
+import { Province } from '../../../domain/entities/localization/Province'
+import { EnterpriseClient } from '../../../domain/entities/persons/EnterpriseClient'
+import { Fare } from '../../../domain/entities/persons/Fare'
+import { DocumentType } from '../../../domain/entities/persons/Person'
 import { AddClientDTO } from './addClient'
-import { DocumentType } from '../../../../domain/entities/persons/Person'
-import { Province } from '../../../../domain/entities/localization/Province'
-import { District } from '../../../../domain/entities/localization/District'
-import { Fare } from '../../../../domain/entities/persons/Fare'
 
 export class AddEnterpriseClientDTO extends AddClientDTO {
   private readonly companyName: string

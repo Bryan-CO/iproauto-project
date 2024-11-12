@@ -22,6 +22,7 @@ export class AppServer {
   private setupMiddlewares (): void {
     // Aquí irán todos los middlewares, aunque el de errores siempre va al último (en teoría creo)
     this.app.use(express.json())
+    this.app.use(express.urlencoded({ extended: true }))
     // Luego agregar el de cors
   }
 }

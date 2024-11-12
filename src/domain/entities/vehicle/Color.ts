@@ -1,8 +1,8 @@
 export class VehicleColor {
   private readonly idColor: number | null
-  private readonly name: string
+  private readonly name: string | null
 
-  constructor (idColor: number | null, name: string) {
+  constructor (idColor: number | null, name: string | null) {
     this.idColor = idColor
     this.name = name
   }
@@ -11,7 +11,7 @@ export class VehicleColor {
     return this.idColor
   }
 
-  getName (): string {
+  getName (): string | null {
     return this.name
   }
 }

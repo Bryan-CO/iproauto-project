@@ -1,7 +1,7 @@
-import { GetClientSummaryDTO } from '../../../application/dtos/vehicle/person/getClientSummary'
+import { GetClientDTO } from '../../../application/dtos/person/getClients'
 import { DocumentType } from '../../entities/persons/Person'
 
 export interface IClientRepository {
-  getClientsSummary: () => Promise<GetClientSummaryDTO[]>
+  getClients: () => Promise<GetClientDTO[]>
   getDocumentTypes: () => Promise<DocumentType[]>
 }

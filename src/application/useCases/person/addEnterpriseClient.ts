@@ -1,6 +1,6 @@
 import { EnterpriseClient } from '../../../domain/entities/persons/EnterpriseClient'
 import { IEnterpriseClientRepository } from '../../../domain/repositories/person/enterpriseClient.repo'
-import { AddEnterpriseClientDTO } from '../../dtos/vehicle/person/addEnterpriseClient'
+import { AddEnterpriseClientDTO } from '../../dtos/person/addEnterpriseClient'
 
 export class AddEnterpriseClient {
   private readonly enterpriseClientRepository: IEnterpriseClientRepository

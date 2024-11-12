@@ -1,5 +1,8 @@
 @API_URL = http://localhost:1278/api
 
+### GET VEHICLE BY LICENSE PLATE
+GET {{API_URL}}/vehicles/CJH-462
+
 ### GET ALL VEHICLE BRANDS
 GET {{API_URL}}/vehicles/brands
 
@@ -22,7 +25,7 @@ GET {{API_URL}}/localization/provinces
 GET {{API_URL}}/localization/provinces/3/districts
 
 ### GET CLIENT SUMMARY
-GET {{API_URL}}/clients/summary
+GET {{API_URL}}/clients
 
 ### GET DOCUMENT TYPES
 GET {{API_URL}}/clients/documents/types
@@ -35,7 +38,7 @@ POST {{API_URL}}/vehicles/brands
 Content-Type: application/json
 
 {
-    "name": "Toyota123456"
+    "name": "a "
 }
 
 ### ADD VEHICLE MODEL
@@ -43,15 +46,15 @@ POST {{API_URL}}/vehicles/models
 Content-Type: application/json
 
 {
-    "idBrand": 6,
-    "name": "Toyota12345678"
+    "idBrand": 1,
+    "name": "XD"
 }
 
 ### GET NATURAL CLIENT BY ID
 GET {{API_URL}}/clients/naturals/7
 
 ### GET ENTERPRISE CLIENT BY ID
-GET {{API_URL}}/clients/enterprises/2
+GET {{API_URL}}/clients/enterprises
 
 ### ADD NATURAL CLIENT
 POST {{API_URL}}/clients/naturals
@@ -87,4 +90,45 @@ Content-Type: application/json
     "idFare": 1,
     "contactPerson": "Nill XD",
     "contactPhone": "951321032"
+}
+
+### ADD VEHICLE
+POST {{API_URL}}/vehicles
+Content-Type: application/json
+
+{
+    "licensePlate": "ABC340",
+    "idBrand": 1,
+    "idModel": 1,
+    "idColor": 1,
+    "year": 2020,
+    "engineCapacity": 1000,
+    "chassisNumber": "123456789",
+    "idFuel": 1,
+    "observations": "Este es un vehículo",
+    "urlImage": "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+    "idPerson": 2
+}
+
+### GET RECEPTIONS
+GET {{API_URL}}/receptions
+
+### ADD RECEPTION
+POST {{API_URL}}/receptions
+Content-Type: application/json
+
+{
+    "date": "2021-01-01 00:00:00",
+    "idVehicle": 8,
+    "kilometers": 100,
+    "towedIn": true,
+    "idEmployee": 1,
+    "promisedDate": "2021-01-01 00:00:00",
+    "nonOwnerPerson": "Marlene Macedonia",
+    "nonOwnerPhone": "914568919",
+    "stateImageUrl": "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+    "repairNotes": "Este es un vehículo",
+    "soatExpirationDate": "2021-01-01",
+    "nextServiceDate": "2021-01-01",
+    "inspectionExpirationDate": "2021-01-01"
 }

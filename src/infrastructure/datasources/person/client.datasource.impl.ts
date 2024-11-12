@@ -1,7 +1,7 @@
-import { GetClientSummaryDTO } from '../../../application/dtos/vehicle/person/getClientSummary'
 import { IClientDataSource } from '../../../domain/datasources/person/client.datasource'
 import { DatabaseClient } from '../../db/databaseClient.impl'
 import { DocumentType } from '../../../domain/entities/persons/Person'
+import { GetClientDTO } from '../../../application/dtos/person/getClients'
 
 export class ClientDataSource implements IClientDataSource {
   private readonly databaseClient: DatabaseClient
@@ -9,11 +9,11 @@ export class ClientDataSource implements IClientDataSource {
     this.databaseClient = databaseClient
   }
 
-  async getClientsSummary (): Promise<GetClientSummaryDTO[]> {
-    const clientSummary = await this.databaseClient.executeProcedure<GetClientSummaryDTO[]>({
-      nameProcedure: 'get_client_summary'
+  async getClients (): Promise<GetClientDTO[]> {
+    const clients = await this.databaseClient.executeProcedure<GetClientDTO[]>({
+      nameProcedure: 'get_clients'
     })
-    return clientSummary
+    return clients
   }
 
   async getDocumentTypes (): Promise<DocumentType[]> {

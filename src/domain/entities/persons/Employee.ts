@@ -2,6 +2,7 @@ import { NaturalPerson } from './NaturalPerson'
 import { DocumentType } from './Person'
 import { District } from '../localization/District'
 import { Province } from '../localization/Province'
+import { Fare } from './Fare'
 
 export class Employee extends NaturalPerson {
   private readonly employeeSince: Date | null
@@ -22,7 +23,7 @@ export class Employee extends NaturalPerson {
     // gender: string | null,
     employeeSince: Date | null
   ) {
-    super(idPerson, documentType, documentNumber, province, district, address, selfPhone, referencePhone, email, observations, firstName, lastName /* birthDate, gender */)
+    super(idPerson, documentType, documentNumber, province, district, address, selfPhone, referencePhone, email, observations, new Fare(1, null), firstName, lastName /* birthDate, gender */)
     this.employeeSince = employeeSince
   }
 

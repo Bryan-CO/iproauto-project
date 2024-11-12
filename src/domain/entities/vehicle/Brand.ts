@@ -1,8 +1,8 @@
 export class VehicleBrand {
   private readonly idBrand: number | null
-  private readonly name: string
+  private readonly name: string | null
 
-  constructor (idBrand: number | null, name: string) {
+  constructor (idBrand: number | null, name: string | null) {
     this.idBrand = idBrand
     this.name = name
   }
@@ -11,7 +11,7 @@ export class VehicleBrand {
     return this.idBrand
   }
 
-  getName (): string {
+  getName (): string | null {
     return this.name
   }
 }

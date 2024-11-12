@@ -1,7 +1,8 @@
-import { AddEnterpriseClientDTO } from '../../../../application/dtos/vehicle/person/addEnterpriseClient'
-import { AddNaturalClientDTO } from '../../../../application/dtos/vehicle/person/addNaturalClient'
+
+import { AddEnterpriseClientDTO } from '../../../../application/dtos/person/addEnterpriseClient'
+import { AddNaturalClientDTO } from '../../../../application/dtos/person/addNaturalClient'
 import { ResponseModel } from '../../../../shared/ResponseModel'
-import { getClientsSummary, getDocumentTypes } from '../../../dependencies/person/client.container'
+import { getClients, getDocumentTypes } from '../../../dependencies/person/client.container'
 import { addEnterpriseClient, getEnterpriseClientById } from '../../../dependencies/person/enterpriseClient.container'
 import { addNaturalClient, getNaturalClientById } from '../../../dependencies/person/naturalClient.container'
 import { Request, Response } from 'express'
@@ -22,8 +23,8 @@ export class ClientController {
     ResponseModel.success({ res, data: enterpriseClient, message: 'Enterprise Client added successfully' })
   }
 
-  static async getClientsSummary (req: Request, res: Response): Promise<void> {
-    const clientSummary = await getClientsSummary.execute()
+  static async getClients (req: Request, res: Response): Promise<void> {
+    const clientSummary = await getClients.execute()
     ResponseModel.success({ res, data: clientSummary, message: 'Clients summary successfully' })
   }
 

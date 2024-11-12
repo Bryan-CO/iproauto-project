@@ -1,4 +1,4 @@
-import { AddEnterpriseClientDTO } from '../../../application/dtos/vehicle/person/addEnterpriseClient'
+import { AddEnterpriseClientDTO } from '../../../application/dtos/person/addEnterpriseClient'
 import { EnterpriseClient } from '../../entities/persons/EnterpriseClient'
 
 export interface IAddEnterpriseClient {

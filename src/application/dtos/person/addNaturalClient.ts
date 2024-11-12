@@ -1,8 +1,9 @@
-import { District } from '../../../../domain/entities/localization/District'
-import { Province } from '../../../../domain/entities/localization/Province'
-import { Fare } from '../../../../domain/entities/persons/Fare'
-import { NaturalClient } from '../../../../domain/entities/persons/NaturalClient'
-import { DocumentType } from '../../../../domain/entities/persons/Person'
+
+import { District } from '../../../domain/entities/localization/District'
+import { Province } from '../../../domain/entities/localization/Province'
+import { Fare } from '../../../domain/entities/persons/Fare'
+import { NaturalClient } from '../../../domain/entities/persons/NaturalClient'
+import { DocumentType } from '../../../domain/entities/persons/Person'
 import { AddClientDTO } from './addClient'
 
 export class AddNaturalClientDTO extends AddClientDTO {

@@ -1,4 +1,4 @@
-import { AddNaturalClientDTO } from '../../../application/dtos/vehicle/person/addNaturalClient'
+import { AddNaturalClientDTO } from '../../../application/dtos/person/addNaturalClient'
 import { NaturalClient } from '../../entities/persons/NaturalClient'
 
 export interface IAddNaturalClient {

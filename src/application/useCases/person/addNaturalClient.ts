@@ -1,7 +1,7 @@
 import { NaturalClient } from '../../../domain/entities/persons/NaturalClient'
 import { INaturalClientRepository } from '../../../domain/repositories/person/naturalClient.repo'
 import { IAddNaturalClient } from '../../../domain/useCases/person/addNaturalClient'
-import { AddNaturalClientDTO } from '../../dtos/vehicle/person/addNaturalClient'
+import { AddNaturalClientDTO } from '../../dtos/person/addNaturalClient'
 
 export class AddNaturalClient implements IAddNaturalClient {
   constructor (private readonly naturalClientRepository: INaturalClientRepository) {
