@@ -5,6 +5,7 @@ import { NaturalClient } from '../../../domain/entities/persons/NaturalClient'
 import { DocumentType } from '../../../domain/entities/persons/Person'
 
 export function DbToNaturalClient (dbNaturalClient: any): NaturalClient {
+  console.log(dbNaturalClient)
   return new NaturalClient(
     dbNaturalClient.id_client,
     dbNaturalClient.id_person,

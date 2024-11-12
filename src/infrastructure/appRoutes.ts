@@ -4,6 +4,7 @@ import { LocalizationRouter } from './routes/localization/localizationRoutes'
 import { ClientRouter } from './routes/person/client/clientsRoutes'
 import { FareRouter } from './routes/fare/fareRoutes'
 import { ReceptionRouter } from './routes/reception/receptionRouter'
+import { EmployeeRouter } from './routes/employee/employee.router'
 
 // eslint-disable-next-line
 export class AppRoutes {
@@ -14,6 +15,7 @@ export class AppRoutes {
     router.use('/clients', ClientRouter.getRoutes())
     router.use('/fares', FareRouter.getRoutes())
     router.use('/receptions', ReceptionRouter.getRoutes())
+    router.use('/employees', EmployeeRouter.getRoutes())
     return router
   }
 }

@@ -6,6 +6,7 @@ export class AddReceptionDTOBuilder {
   kilometers: number | null = null
   towedIn: boolean | null = null
   idEmployee: number | null = null
+  idFuelLevel: number | null = null
   promisedDate: Date | null = null
   nonOwnerPerson: string | null = null
   nonOwnerPhone: string | null = null
@@ -33,6 +34,11 @@ export class AddReceptionDTOBuilder {
 
   public withTowedIn (towedIn: boolean | null): AddReceptionDTOBuilder {
     this.towedIn = towedIn
+    return this
+  }
+
+  public withFuelLevel (idFuelLevel: number | null): AddReceptionDTOBuilder {
+    this.idFuelLevel = idFuelLevel
     return this
   }
 
@@ -96,6 +102,7 @@ export class AddReceptionDTO {
   private readonly kilometers: number | null
   private readonly towedIn: boolean | null
   private readonly idEmployee: number | null
+  private readonly idFuelLevel: number | null
   private readonly promisedDate: Date | null
   private readonly nonOwnerPerson: string | null
   private readonly nonOwnerPhone: string | null
@@ -111,6 +118,7 @@ export class AddReceptionDTO {
     this.idVehicle = builder.idVehicle
     this.kilometers = builder.kilometers
     this.towedIn = builder.towedIn
+    this.idFuelLevel = builder.idFuelLevel
     this.idEmployee = builder.idEmployee
     this.promisedDate = builder.promisedDate
     this.nonOwnerPerson = builder.nonOwnerPerson
@@ -141,6 +149,10 @@ export class AddReceptionDTO {
 
   getIdEmployee (): number | null {
     return this.idEmployee
+  }
+
+  getIdFuelLevel (): number | null {
+    return this.idFuelLevel
   }
 
   getPromisedDate (): Date | null {
@@ -187,6 +199,9 @@ export class AddReceptionDTO {
         idVehicle: this.getIdVehicle()
       })
       .withTowedIn(this.getTowedIn())
+      .withFuelLevel({
+        idFuelLevel: this.getIdFuelLevel()
+      })
       .withEmployee({
         idEmployee: this.getIdEmployee()
       })

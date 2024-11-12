@@ -16,6 +16,10 @@ export function DbToReceptions (dbReceptions: any[]): Reception[] {
         chassisNumber: receptionDb.chassis_number
       })
       .withTowedIn(receptionDb.towed_in)
+      .withFuelLevel({
+        idFuelLevel: receptionDb.id_fuel_level,
+        level: receptionDb.fuel_level
+      })
       .withEmployee({
         idEmployee: receptionDb.id_employee,
         employee: receptionDb.employee,
@@ -36,6 +40,9 @@ export function DbToReceptions (dbReceptions: any[]): Reception[] {
         districtName: receptionDb.district_name,
         selfPhone: receptionDb.self_phone
       })
+      .withSoatExpirationDate(receptionDb.soat_expiration_date)
+      .withNextServiceDate(receptionDb.next_service_date)
+      .withInspectionExpirationDate(receptionDb.inspection_expiration_date)
       .build()
   })
   return receptions

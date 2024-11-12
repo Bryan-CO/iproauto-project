@@ -7,6 +7,11 @@ interface VehicleSummary {
   chassisNumber?: string | null
 }
 
+interface FuelLevel {
+  idFuelLevel?: number | null
+  level?: number | null
+}
+
 interface ClientSummary {
   idPerson?: number | null
   documentTypeName?: string | null
@@ -30,6 +35,7 @@ export class Reception {
   private readonly kilometers: number | null
   private readonly vehicle: VehicleSummary | null
   private readonly towedIn: boolean | null
+  private readonly fuelLevel: FuelLevel | null
   private readonly employee: EmployeeSummary | null
   private readonly promisedDate: Date | null
   private readonly nonOwnerPerson: string | null
@@ -48,6 +54,7 @@ export class Reception {
     this.kilometers = receptionBuilder.kilometers
     this.vehicle = receptionBuilder.vehicle
     this.towedIn = receptionBuilder.towedIn
+    this.fuelLevel = receptionBuilder.fuelLevel
     this.employee = receptionBuilder.employee
     this.promisedDate = receptionBuilder.promisedDate
     this.nonOwnerPerson = receptionBuilder.nonOwnerPerson
@@ -82,6 +89,10 @@ export class Reception {
 
   getTowedIn (): boolean | null {
     return this.towedIn
+  }
+
+  getFuelLevel (): FuelLevel | null {
+    return this.fuelLevel
   }
 
   getEmployee (): EmployeeSummary | null {
@@ -137,6 +148,7 @@ export class ReceptionBuilder {
   kilometers: number | null = null
   vehicle: VehicleSummary | null = null
   towedIn: boolean | null = null
+  fuelLevel: FuelLevel | null = null
   employee: EmployeeSummary | null = null
   promisedDate: Date | null = null
   nonOwnerPerson: string | null = null
@@ -175,6 +187,11 @@ export class ReceptionBuilder {
 
   public withTowedIn (towedIn: boolean | null): ReceptionBuilder {
     this.towedIn = towedIn
+    return this
+  }
+
+  public withFuelLevel (fuelLevel: FuelLevel | null): ReceptionBuilder {
+    this.fuelLevel = fuelLevel
     return this
   }
 

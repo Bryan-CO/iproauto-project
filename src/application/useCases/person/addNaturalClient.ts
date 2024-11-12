@@ -9,6 +9,7 @@ export class AddNaturalClient implements IAddNaturalClient {
   }
 
   async execute (addNaturalClientDTO: AddNaturalClientDTO): Promise<NaturalClient> {
+    console.log(addNaturalClientDTO)
     const naturalClient = this.naturalClientRepository.addNaturalClient(addNaturalClientDTO.toNaturalClient())
     return await naturalClient
   }

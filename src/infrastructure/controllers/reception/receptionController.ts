@@ -13,13 +13,14 @@ export class ReceptionController {
   }
 
   static async addReception (req: Request, res: Response): Promise<void> {
-    const { date, idVehicle, kilometers, towedIn, idEmployee, promisedDate, nonOwnerPerson, nonOwnerPhone, stateImageUrl, repairNotes, soatExpirationDate, nextServiceDate, inspectionExpirationDate } = req.body
+    const { date, idVehicle, kilometers, towedIn, idFuelLevel, idEmployee, promisedDate, nonOwnerPerson, nonOwnerPhone, stateImageUrl, repairNotes, soatExpirationDate, nextServiceDate, inspectionExpirationDate } = req.body
     const image = req.file?.buffer ?? null
     const addReceptionDTO = new AddReceptionDTOBuilder()
       .withDate(date)
       .withIdVehicle(idVehicle)
       .withKilometers(kilometers)
       .withTowedIn(towedIn)
+      .withFuelLevel(idFuelLevel)
       .withIdEmployee(idEmployee)
       .withPromisedDate(new Date(promisedDate))
       .withNonOwnerPerson(nonOwnerPerson)

@@ -24,6 +24,7 @@ export class ReceptionDataSource implements IReceptionDataSource {
         reception.getVehicle()?.idVehicle,
         reception.getKilometers(),
         reception.getTowedIn(),
+        reception.getFuelLevel()?.idFuelLevel,
         reception.getEmployee()?.idEmployee,
         reception.getPromisedDate(),
         reception.getNonOwnerPerson(),

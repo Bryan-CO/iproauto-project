@@ -32,6 +32,14 @@ export const addReceptionValidator = [
     .toBoolean()
     .isBoolean()
     .withMessage(generateErrorIsNotBoolean('towedIn')),
+  body('idFuelLevel')
+    .notEmpty()
+    .withMessage(generateErrorIsEmpty('idFuelLevel'))
+    .toInt()
+    .isInt({
+      min: 1
+    })
+    .withMessage(generateErrorIsNotInt('idFuelLevel')),
   body('idEmployee')
     .notEmpty()
     .withMessage(generateErrorIsEmpty('idEmployee'))
