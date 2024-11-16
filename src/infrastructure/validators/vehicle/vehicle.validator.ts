@@ -75,6 +75,8 @@ export const addVehicleValidator = [
     .withMessage(generateErrorIsNotString('urlImage'))
     .trim(),
   body('idPerson')
+    .trim()
+    .customSanitizer(value => value === '' ? undefined : value)
     .optional()
     .toInt()
     .isInt({

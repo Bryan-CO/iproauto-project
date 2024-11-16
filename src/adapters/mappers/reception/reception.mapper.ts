@@ -12,7 +12,7 @@ export function DbToReceptions (dbReceptions: any[]): Reception[] {
         licensePlate: receptionDb.license_plate,
         brandName: receptionDb.brand_name,
         modelName: receptionDb.model_name,
-        engineCapacity: receptionDb.engine_capacity,
+        engineCapacity: Number(receptionDb.engine_capacity),
         chassisNumber: receptionDb.chassis_number
       })
       .withTowedIn(receptionDb.towed_in)
@@ -33,7 +33,7 @@ export function DbToReceptions (dbReceptions: any[]): Reception[] {
       .withClient({
         idPerson: receptionDb.id_person,
         documentTypeName: receptionDb.document_type_name,
-        documentNumber: receptionDb.document_number,
+        documentNumber: receptionDb.client_document_number,
         client: receptionDb.client,
         address: receptionDb.address,
         provinceName: receptionDb.province_name,

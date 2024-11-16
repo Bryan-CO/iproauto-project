@@ -28,6 +28,7 @@ export class EnterpriseClientDataSource implements IEnterpriseClientDataSource {
       ],
       onRow: true
     })
+    console.log(enterpriseClientId)
     return enterpriseClientId
   }
 

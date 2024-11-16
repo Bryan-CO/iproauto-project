@@ -20,7 +20,7 @@ export function DbToClientSummary (dbClientSummary: any[]): GetClientDTO[] {
       new Fare(clientDb.id_fare, clientDb.fare_name),
       clientDb.names,
       clientDb.last_names,
-      clientDb.companyName,
+      clientDb.company_name,
       clientDb.contact_person,
       clientDb.contact_phone
     )

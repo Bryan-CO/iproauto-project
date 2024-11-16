@@ -6,7 +6,9 @@ import { Fare } from './Fare'
 
 export class Employee extends NaturalPerson {
   private readonly employeeSince: Date | null
+  private readonly idEmployee: number
   constructor (
+    idEmployee: number,
     idPerson: number,
     documentType: DocumentType | null,
     documentNumber: string | null,
@@ -25,9 +27,14 @@ export class Employee extends NaturalPerson {
   ) {
     super(idPerson, documentType, documentNumber, province, district, address, selfPhone, referencePhone, email, observations, new Fare(1, null), firstName, lastName /* birthDate, gender */)
     this.employeeSince = employeeSince
+    this.idEmployee = idEmployee
   }
 
   getEmployeeSince (): Date | null {
     return this.employeeSince
+  }
+
+  getIdEmployee (): number {
+    return this.idEmployee
   }
 }

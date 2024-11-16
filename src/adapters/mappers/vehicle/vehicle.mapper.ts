@@ -20,7 +20,7 @@ export function DbToVehicle (dbVehicle: any): Vehicle {
     .withClient({
       idPerson: dbVehicle.id_person,
       documentTypeName: dbVehicle.document_type_name,
-      documentNumber: dbVehicle.document_number,
+      documentNumber: dbVehicle.client_document_number,
       client: dbVehicle.client,
       address: dbVehicle.address,
       provinceName: dbVehicle.province_name,

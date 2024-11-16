@@ -12,7 +12,7 @@ export class EnterpriseClientRepository implements IEnterpriseClientRepository {
 
   async addEnterpriseClient (enterpriseClient: EnterpriseClient): Promise<EnterpriseClient> {
     const enterpriseClientId = await this.enterpriseClientDatasource.addEnterpriseClient(enterpriseClient)
-    return DbToEnterpriseClient(enterpriseClientId)
+    return DbToEnterpriseClient([enterpriseClientId])
   }
 
   async getEnterpriseClientById (idEnterpriseClient: number): Promise<EnterpriseClient> {

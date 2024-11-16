@@ -6,7 +6,7 @@ const generateErrorIsNotInt = (variable: string): string => `${variable} debe se
 const generateErrorIsNotBoolean = (variable: string): string => `${variable} debe ser un boolean`
 export const addReceptionValidator = [
   body('date')
-    .optional()
+    .toDate()
     .isISO8601()
     .withMessage(generateDateIsNotValid('date')),
   body('idVehicle')
@@ -51,6 +51,7 @@ export const addReceptionValidator = [
   body('promisedDate')
     .notEmpty()
     .withMessage(generateErrorIsEmpty('promisedDate'))
+    .toDate()
     .isISO8601()
     .withMessage(generateDateIsNotValid('promisedDate')),
   body('nonOwnerPerson')
@@ -76,17 +77,20 @@ export const addReceptionValidator = [
   body('soatExpirationDate')
     .notEmpty()
     .withMessage(generateErrorIsEmpty('soatExpirationDate'))
-    .isDate()
+    .toDate()
+    .isISO8601()
     .withMessage(generateDateIsNotValid('soatExpirationDate')),
   body('nextServiceDate')
     .notEmpty()
     .withMessage(generateErrorIsEmpty('nextServiceDate'))
-    .isDate()
+    .toDate()
+    .isISO8601()
     .withMessage(generateDateIsNotValid('nextServiceDate')),
   body('inspectionExpirationDate')
     .notEmpty()
     .withMessage(generateErrorIsEmpty('inspectionExpirationDate'))
-    .isDate()
+    .toDate()
+    .isISO8601()
     .withMessage(generateDateIsNotValid('inspectionExpirationDate'))
 ]
 export const updateReceptionValidator = [
