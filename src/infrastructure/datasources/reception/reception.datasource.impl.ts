@@ -16,7 +16,6 @@ export class ReceptionDataSource implements IReceptionDataSource {
   }
 
   async addReception (reception: Reception): Promise<any> {
-    console.log(reception)
     const newReception = await this.databaseClient.executeProcedure<any>({
       nameProcedure: 'add_reception',
       parameters: [

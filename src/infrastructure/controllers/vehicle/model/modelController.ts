@@ -12,7 +12,6 @@ export class VehicleModelController {
 
   static async getVehicleModelsByBrandId (req: Request, res: Response): Promise<void> {
     if (!validationResult(req).isEmpty()) {
-      console.log(validationResult(req))
       return
     }
     const { idBrand } = req.params
@@ -22,7 +21,6 @@ export class VehicleModelController {
 
   static async addVehicleModel (req: Request, res: Response): Promise<void> {
     if (!validationResult(req).isEmpty()) {
-      console.log(validationResult(req))
       return
     }
     const { idBrand, name } = req.body

@@ -23,7 +23,6 @@ export class FileStorageDataSource implements IFileStorageDataSource {
 
   async getUrl (path: string): Promise<string> {
     const existingLink = await this.dbx.sharingListSharedLinks({ path })
-    console.log(existingLink)
     if (existingLink.result.links.length > 0) {
       return this.urlToRawImg(existingLink.result.links[0].url)
     }

@@ -15,7 +15,6 @@ export class ReceptionController {
   static async addReception (req: Request, res: Response): Promise<void> {
     const { date, idVehicle, kilometers, towedIn, idFuelLevel, idEmployee, promisedDate, nonOwnerPerson, nonOwnerPhone, stateImageUrl, repairNotes, soatExpirationDate, nextServiceDate, inspectionExpirationDate } = req.body
     const image = req.file?.buffer ?? null
-    console.log({ date })
     const addReceptionDTO = new AddReceptionDTOBuilder()
       .withDate(date)
       .withIdVehicle(idVehicle)
@@ -41,7 +40,6 @@ export class ReceptionController {
     const { id } = req.params
     const { date, idVehicle, kilometers, towedIn, idEmployee, promisedDate, nonOwnerPerson, nonOwnerPhone, stateImageUrl, repairNotes, soatExpirationDate, nextServiceDate, inspectionExpirationDate } = req.body
     if (!validationResult(req).isEmpty()) {
-      console.log(validationResult(req))
       return
     }
     const image = req.file?.buffer ?? null

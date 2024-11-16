@@ -15,7 +15,6 @@ export class VehicleController {
   static async addVehicle (req: Request, res: Response): Promise<void> {
     const { licensePlate, idBrand, idModel, idColor, year, engineCapacity, chassisNumber, idFuel, observations, urlImage, idPerson } = req.body
     if (!validationResult(req).isEmpty()) {
-      console.log(validationResult(req))
       return
     }
     const image: Buffer | undefined = req.file?.buffer
