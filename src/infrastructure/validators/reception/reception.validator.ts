@@ -49,8 +49,9 @@ export const addReceptionValidator = [
     })
     .withMessage(generateErrorIsNotInt('idEmployee')),
   body('promisedDate')
-    .notEmpty()
-    .withMessage(generateErrorIsEmpty('promisedDate'))
+    .trim()
+    .customSanitizer(value => value === '' ? undefined : value)
+    .optional()
     .toDate()
     .isISO8601()
     .withMessage(generateDateIsNotValid('promisedDate')),
@@ -75,20 +76,23 @@ export const addReceptionValidator = [
     .withMessage(generateErrorIsNotString('repairNotes'))
     .trim(),
   body('soatExpirationDate')
-    .notEmpty()
-    .withMessage(generateErrorIsEmpty('soatExpirationDate'))
+    .trim()
+    .customSanitizer(value => value === '' ? undefined : value)
+    .optional()
     .toDate()
     .isISO8601()
     .withMessage(generateDateIsNotValid('soatExpirationDate')),
   body('nextServiceDate')
-    .notEmpty()
-    .withMessage(generateErrorIsEmpty('nextServiceDate'))
+    .trim()
+    .customSanitizer(value => value === '' ? undefined : value)
+    .optional()
     .toDate()
     .isISO8601()
     .withMessage(generateDateIsNotValid('nextServiceDate')),
   body('inspectionExpirationDate')
-    .notEmpty()
-    .withMessage(generateErrorIsEmpty('inspectionExpirationDate'))
+    .trim()
+    .customSanitizer(value => value === '' ? undefined : value)
+    .optional()
     .toDate()
     .isISO8601()
     .withMessage(generateDateIsNotValid('inspectionExpirationDate'))
@@ -131,6 +135,11 @@ export const updateReceptionValidator = [
     })
     .withMessage(generateErrorIsNotInt('idEmployee')),
   body('promisedDate')
+    .trim()
+    .customSanitizer(value => {
+      console.log({ value })
+      return value === '' ? undefined : value
+    })
     .optional()
     .isISO8601()
     .withMessage(generateDateIsNotValid('promisedDate')),

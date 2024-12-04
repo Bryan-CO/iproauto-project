@@ -4,6 +4,7 @@ import { addReception, editReception, getFuelLevels, getReceptions } from '../..
 import { AddReceptionDTOBuilder } from '../../../application/dtos/reception/addReception'
 import { EditReceptionDtoBuilder } from '../../../application/dtos/reception/editReception'
 import { validationResult } from 'express-validator'
+import { parseDate } from '../../../shared/utils/DateMethods'
 
 // eslint-disable-next-line
 export class ReceptionController {
@@ -22,14 +23,14 @@ export class ReceptionController {
       .withTowedIn(towedIn)
       .withFuelLevel(idFuelLevel)
       .withIdEmployee(idEmployee)
-      .withPromisedDate(new Date(promisedDate))
+      .withPromisedDate(parseDate(promisedDate))
       .withNonOwnerPerson(nonOwnerPerson)
       .withNonOwnerPhone(nonOwnerPhone)
       .withStateImageUrl(stateImageUrl)
       .withRepairNotes(repairNotes)
-      .withSoatExpirationDate(new Date(soatExpirationDate))
-      .withNextServiceDate(new Date(nextServiceDate))
-      .withInspectionExpirationDate(new Date(inspectionExpirationDate))
+      .withSoatExpirationDate(parseDate(soatExpirationDate))
+      .withNextServiceDate(parseDate(nextServiceDate))
+      .withInspectionExpirationDate(parseDate(inspectionExpirationDate))
       .withImage(image)
       .build()
     const reception = await addReception.execute(addReceptionDTO, req.file?.mimetype.split('/')[1])
